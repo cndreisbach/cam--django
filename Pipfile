@@ -5,9 +5,12 @@ name = "pypi"
 
 [packages]
 django = "*"
-"psycopg2" = "*"
+"psycopg2-binary" = "*"
+pillow = "*"
 
 [dev-packages]
+black = "==18.9b0"
+pylint = "*"
 
 [requires]
 python_version = "3.7"
