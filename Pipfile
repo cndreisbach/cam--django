@@ -7,6 +7,7 @@ name = "pypi"
 django = "*"
 "psycopg2-binary" = "*"
 pillow = "*"
+django-extensions = "*"
 
 [dev-packages]
 black = "==18.9b0"
