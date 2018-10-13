@@ -8,6 +8,7 @@ django = "*"
 "psycopg2-binary" = "*"
 pillow = "*"
 django-extensions = "*"
+werkzeug = "*"
 
 [dev-packages]
 black = "==18.9b0"
