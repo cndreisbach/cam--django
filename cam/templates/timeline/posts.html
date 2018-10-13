@@ -1,0 +1,26 @@
+{% extends request.is_ajax|yesno:"timeline/base_ajax.html,timeline/base.html" %}
+
+{% block content %}
+  {% for post in posts %}
+    <div class="card timeline__card">
+      <div class="card-content content">
+        <p class="title is-size-5">{{ post.posted_at }}</p>
+        {% if post.title %}
+          <h2 class="subtitle">{{ post.title }}</h2> 
+        {% endif %}
+        {% if post.body %}
+          <div class="post__body">{{ post.body | linebreaks }}</div> 
+        {% endif %}
+        
+        {% for photo in post.photo_set.all %}
+          <figure class="image timeline__image">
+            <img src="{{ photo.image.url }}" alt="{{ photo.caption }}"/>
+            {% if photo.caption %}                  
+              <figcaption>{{ photo.caption }}</figcaption>
+            {% endif %}
+          </figure>
+        {% endfor %}              
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

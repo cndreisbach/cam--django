@@ -150,3 +150,4 @@ media
 
 # End of https://www.gitignore.io/api/django
 cam/uploads/
+node_modules/
