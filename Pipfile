@@ -12,6 +12,8 @@ django-extensions = "*"
 [dev-packages]
 black = "==18.9b0"
 pylint = "*"
+pylint-django = "*"
+prospector = "*"
 
 [requires]
 python_version = "3.7"

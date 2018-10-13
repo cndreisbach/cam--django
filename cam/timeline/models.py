@@ -8,8 +8,14 @@ class Post(models.Model):
     posted_at = models.DateTimeField(null=False)
     data = JSONField()
 
+    def __str__(self):
+        return self.body
+
 
 class Photo(models.Model):
     caption = models.TextField(null=True, blank=True)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='photos')
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.caption
