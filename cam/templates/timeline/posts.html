@@ -4,7 +4,7 @@
   {% for post in posts %}
     <div class="card timeline__card">
       <div class="card-content content">
-        <p class="title is-size-5">{{ post.posted_at }}</p>
+        <p class="title is-size-5">{{ post.posted_at | date:"F j, Y" }}</p>
         {% if post.title %}
           <h2 class="subtitle">{{ post.title }}</h2> 
         {% endif %}
@@ -14,7 +14,7 @@
         
         {% for photo in post.photo_set.all %}
           <figure class="image timeline__image">
-            <img src="{{ photo.image.url }}" alt="{{ photo.caption }}"/>
+            <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" data-action="click->timeline#showImage" data-image-url="{{ photo.image.url }}" />
             {% if photo.caption %}                  
               <figcaption>{{ photo.caption }}</figcaption>
             {% endif %}
@@ -34,7 +34,7 @@
           {% for month in months %}
             <li>
               <!-- todo this has to be end of month -->
-              <a href="/?start={{ month|date:"Y-m-d"}}">
+              <a href="{% url 'timeline' %}?start={{ month|date:"Y-m-d"}}">
                 {{ month|date:"F" }}
               </a>
             </li>

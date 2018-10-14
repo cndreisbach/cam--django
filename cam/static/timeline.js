@@ -3,9 +3,7 @@
 const request = superagent
 
 class TimelineController extends Stimulus.Controller {
-  connect () {
-    console.log(this.data.get('startDate'))
-  }
+  connect () {}
 
   loadMore (event) {
     event.preventDefault()
@@ -39,6 +37,18 @@ class TimelineController extends Stimulus.Controller {
     } else {
       this.element.querySelector('#load-more').classList.remove('is-loading')
     }
+  }
+
+  showImage (event) {
+    const imageUrl = event.target.dataset.imageUrl
+    const modal = document.getElementById('photo-modal')
+    modal.querySelector('img').src = imageUrl
+    modal.classList.add('is-active')
+  }
+
+  hideImage (event) {
+    const modal = document.getElementById('photo-modal')
+    modal.classList.remove('is-active')
   }
 
   get offset () {

@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic.base import RedirectView
 
 
 from timeline import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.timeline, name='timeline')
+    path("admin/", admin.site.urls),
+    path("timeline/", views.timeline, name="timeline"),
+    path("", RedirectView.as_view(url="/timeline/"), name="root"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

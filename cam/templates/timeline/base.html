@@ -14,5 +14,14 @@
       {% block sidebar %}{% endblock %}      
     </div>
   </div>
+  <div id="photo-modal" class="modal">
+    <div class="modal-background" data-action="click->timeline#hideImage"></div>
+    <div class="modal-content">
+      <p class="image">
+        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="">
+      </p>
+    </div>
+    <button class="modal-close is-large" aria-label="close" data-action="timeline#hideImage"></button>
+  </div>
 </div>
 {% endblock %}
