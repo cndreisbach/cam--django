@@ -11,23 +11,7 @@
       <button class="button is-primary" id="load-more" data-action="timeline#loadMore">Load more</button>
     </div>
     <div class="column is-one-quarter">
-      <ul>
-
-        {% comment %} <% @months_by_year.keys.each do |year| %>
-          <li>
-            <span class="is-size-4 has-text-weight-bold"><%= year %></span>
-            <ul>
-
-              <% @months_by_year[year].each do |month| %>
-                <li>
-                  <a href="<%= timeline_path(start: month.end_of_month.strftime("%Y-%m-%d")) %>">
-                    <%= month.strftime("%B") %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          <% end %> {% endcomment %}
-      </ul>
+      {% block sidebar %}{% endblock %}
     </div>
   </div>
 </div>

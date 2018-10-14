@@ -24,3 +24,23 @@
     </div>
   {% endfor %}
 {% endblock %}
+
+{% block sidebar %}
+  <ul>
+    {% for year, months in months_by_year %}
+      <li>
+        <span class="is-size-4 has-text-weight-bold">{{ year }}</span>
+        <ul>
+          {% for month in months %}
+            <li>
+              <!-- todo this has to be end of month -->
+              <a href="/?start={{ month|date:"Y-m-d"}}">
+                {{ month|date:"F" }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
