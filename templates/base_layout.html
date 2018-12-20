@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}CAM{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'tachyons/css/tachyons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'timeline.css' %}">
+    <script src="{% static "jquery/dist/jquery.min.js" %}"></script>
+    <script src="{% static "intercooler/dist/intercooler.js" %}"></script>
+  </head>
+  <body class="sans-serif pa2 ph4 pb6">
+  <section class="mw9 center">
+    <div>
+      {% block page %}{% endblock %}
+    </div>
+  </section>
+  </body>
+</html>

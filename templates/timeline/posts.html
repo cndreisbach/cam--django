@@ -1,19 +1,20 @@
-{% extends request.is_ajax|yesno:"timeline/base_ajax.html,timeline/base.html" %}
+{% extends request.is_intercooler|yesno:"timeline/base_ic.html,timeline/base.html" %}
 
 {% block content %}
   {% for post in posts %}
-    <div class="card timeline__card">
-      <div class="card-content content">
-        <p class="title is-size-5">{{ post.posted_at | date:"F j, Y" }}</p>
+    <div class="ba b--black-20 br3 mb4">
+      <div>
+        <div class="f4 lh-title bg-near-white pa2">{{ post.posted_at | date:"F j, Y" }}
         {% if post.title %}
-          <h2 class="subtitle">{{ post.title }}</h2> 
+          - {{ post.title }} 
         {% endif %}
+        </div>
         {% if post.body %}
-          <div class="post__body">{{ post.body | linebreaks }}</div> 
+          <div class="lh-copy bt b--black-20 ph3 pv1">{{ post.body | linebreaks }}</div> 
         {% endif %}
         
         {% for photo in post.photo_set.all %}
-          <figure class="image timeline__image">
+          <figure>
             <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" data-action="click->timeline#showImage" data-image-url="{{ photo.image.url }}" />
             {% if photo.caption %}                  
               <figcaption>{{ photo.caption }}</figcaption>
@@ -23,17 +24,19 @@
       </div>
     </div>
   {% endfor %}
+
+  <a href="{% url "timeline" %}?{{ load_more_query }}" ic-get-from="{% url "timeline" %}?{{ load_more_query }}" ic-replace-target="true">Load more</a>  
+
 {% endblock %}
 
 {% block sidebar %}
-  <ul>
+  <ul class="list pl0">
     {% for year, months in months_by_year %}
       <li>
-        <span class="is-size-4 has-text-weight-bold">{{ year }}</span>
-        <ul>
+        <span class="f4 b">{{ year }}</span>
+        <ul class="list pl0 mb4">
           {% for month in months %}
             <li>
-              <!-- todo this has to be end of month -->
               <a href="{% url 'timeline' %}?start={{ month|date:"Y-m-d"}}">
                 {{ month|date:"F" }}
               </a>

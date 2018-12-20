@@ -2,19 +2,18 @@
 
 {% block page %}
 <div class="timeline" data-controller="timeline" data-timeline-total="{{ total }}" data-timeline-offset="{{ posts.count }}" data-timeline-limit="{{ posts.count }}" data-timeline-start-date="{{ start_date_str }}">
-  <h1 class="title">Timeline</h1>
-  <div class="columns">
-    <div class="column is-three-quarters">
+  <h1 class="f1 lh-title">Timeline</h1>
+  <div class="flex flex-wrap">
+    <div class="w-100 w-75-ns">
       <div id="posts">
         {% block content %}{% endblock %}     
-      </div>
-      <button class="button is-primary" id="load-more" data-action="timeline#loadMore">Load more</button>
+      </div>      
     </div>
-    <div class="column is-one-quarter">
+    <div class="w-100 w-25-ns pl4-ns">
       {% block sidebar %}{% endblock %}      
     </div>
   </div>
-  <div id="photo-modal" class="modal">
+  <!-- <div id="photo-modal" class="modal">
     <div class="modal-background" data-action="click->timeline#hideImage"></div>
     <div class="modal-content">
       <p class="image">
@@ -22,6 +21,6 @@
       </p>
     </div>
     <button class="modal-close is-large" aria-label="close" data-action="timeline#hideImage"></button>
-  </div>
+  </div> -->
 </div>
 {% endblock %}

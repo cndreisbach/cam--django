@@ -5,17 +5,15 @@ name = "pypi"
 
 [packages]
 django = "*"
-"psycopg2-binary" = "*"
+"psycopg2" = "*"
 pillow = "*"
 django-extensions = "*"
 werkzeug = "*"
+psycopg2-binary = "*"
+django-intercooler-helpers = "*"
 
 [dev-packages]
-black = "==18.9b0"
-pylint = "*"
-pylint-django = "*"
 prospector = "*"
-"autopep8" = "*"
 yapf = "*"
 
 [requires]
